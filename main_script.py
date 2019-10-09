@@ -23,7 +23,7 @@ async def spam(ctx, mode = "11381138", *, rep = "a"):
     elif str.lower(mode) == "off":
         spam_running = False
         await ctx.send(ctx.message.author.mention + "  |  SpamBot has been disabled")
-    elif str.lower(mode) == "11381138":
+    elif str.lower(mode) == "11381138" or str.lower(mode) == "?" or str.lower(mode) == "help":
         await ctx.send(ctx.message.author.mention + "  |  This bot will send a message every second when enabled\n \n**.spam on**  -  Enables spam bot\n \n**.spam off**  -  Disables spam bot\n \n**.spam**  -  Bot info")
     else:
         await ctx.send(ctx.message.author.mention + "  |  That is not the correct use of this command\n \nUse **.spam** for help")
