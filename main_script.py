@@ -11,14 +11,14 @@ async def on_ready():
     spam_running = False
 
 @client.command(pass_context=True)
-async def spam(ctx, mode = "11381138"):
+async def spam(ctx, mode = "11381138", rep = "a"):
     print("ok")
     if str.lower(mode) == "on":
         await ctx.send(ctx.message.author.mention + "  |  SpamBot has been enabled")
         global spam_running
         spam_running = True
         while spam_running:
-            await ctx.send("a")
+            await ctx.send(rep)
             time.sleep(0.5)
     elif str.lower(mode) == "off":
         spam_running = False
