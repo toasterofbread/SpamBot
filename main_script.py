@@ -1,4 +1,4 @@
-from discord.ext import commands
+from discord.ext import commands, tasks
 import time
 import discord
 
@@ -7,10 +7,12 @@ client = commands.Bot(command_prefix=".")
 @client.event
 async def on_ready():
     print("SpamBot is now running")
-    await client.change_presence(activity=discord.Game("Use '.spam ?' for info"))
     spam_running = False
+    change_status
 
 locked = False
+spamcount = 0
+
 
 @client.command(pass_context=True)
 async def spam(ctx, mode = "11381138", *, rep = "a"):
@@ -31,6 +33,7 @@ async def spam(ctx, mode = "11381138", *, rep = "a"):
         spam_running = True
         while spam_running:
             await ctx.send(rep)
+            spamcount = spamcount + 1
             time.sleep(0.5)
     elif str.lower(mode) == "off" and not locked:
         spam_running = False
@@ -42,6 +45,8 @@ async def spam(ctx, mode = "11381138", *, rep = "a"):
     else:
         await ctx.send(ctx.message.author.mention + "  |  That is not the correct use of this command\n \nUse **.spam** for help")
 
-
+@tasks.loop(seconds=10)
+async def change_status():
+    await client.change_presence(activity=discord.Game(str(spamcount + " spams so far!")))
 
 client.run("NjMxMzE3MjkyMTkzNDE1MTY5.XZ1GHw.3msf91qliwYHllrapma-evDso8A")
