@@ -1,7 +1,7 @@
 from discord.ext import commands, tasks
 import time
 import discord
-from itertools import cycle
+
 
 client = commands.Bot(command_prefix=".")
 
@@ -14,6 +14,7 @@ async def on_ready():
 locked = False
 spamcount = 0
 
+if type(spamcount) is int
 
 @client.command(pass_context=True)
 async def spam(ctx, mode = "11381138", *, rep = "a"):
@@ -49,6 +50,6 @@ async def spam(ctx, mode = "11381138", *, rep = "a"):
 
 @tasks.loop(seconds=10)
 async def change_status():
-    await client.change_presence(activity=discord.Game(str(spamcount) + " spams so far!"))
+    await client.change_presence(activity=discord.Game(str(spamcount // 1000) + " thousand spams!"))
 
 client.run("NjMxMzE3MjkyMTkzNDE1MTY5.XZ1GHw.3msf91qliwYHllrapma-evDso8A")
